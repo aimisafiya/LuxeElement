@@ -141,10 +141,12 @@ nav a.active {
 
 /* TITLE */
 
-.hero-title span {
+.hero-title {
     display: block;
     line-height: 1.15;
+    text-indent: 0;
 }
+
 
 .hero-content h1 {
     font-family: 'Playfair Display', serif;
