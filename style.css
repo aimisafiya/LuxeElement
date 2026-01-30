@@ -153,6 +153,9 @@ nav a.active {
     text-shadow:
         0 2px 6px rgba(0,0,0,0.6),
         0 8px 24px rgba(0,0,0,0.8);
+
+    padding-left: 0.4em;
+    text-indent: -0.4em;
 }
 
 .hero-content h1 br {
