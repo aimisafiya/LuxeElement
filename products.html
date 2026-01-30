@@ -1,0 +1,806 @@
+<html>
+<head>
+    
+    <title> Le City Pouch On Strap in Silver </title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Lora&display=swap" rel="stylesheet">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+    <body>
+        <header>
+            <h1>Luxe Élément</h1>
+            <nav>
+                <a href="index.html">Home Page</a>
+                <a href="collections.html">Collections</a>
+                <a href="services.html">Services</a>
+                <a href="blog.html">Blog</a>
+                <a href="about_us.html">About Us</a>
+                <a href="contact_us.html">Contact Us</a>
+            </nav>
+            <div class="product-cart-container">
+        <div class="product-cart-icon" onclick="toggleCart()">🛒 <span id="cart-count">0</span></div>
+        <div class="product-cart-dropdown" id="cartDropdown"></div>
+    </div>
+</header>
+
+        <div class="product-page">
+        <div class="product-image-gallery">
+            <img id="main-image" src="">
+            <div class="product-thumbnails">
+                <!-- thumbnails akan populate JS -->
+            </div>
+        </div>
+
+        <div class="product-info">
+            <h1 id="product-title"></h1>
+            <h3 class="price" id="product-price"></h3>
+            <p id="product-details"></p>
+            <button class="product-buy-btn" onclick="addToCart()">Add to Cart</button>
+        </div>
+        </div>
+
+<footer id="contact">
+    <p>© 2026 Luxe Élément — Luxury Redefined</p>
+
+    <div class="social-links">
+        <a href="https://www.instagram.com/luxeelement_" target="_blank">Instagram</a>
+        <a href="https://www.tiktok.com/@luxe.lment?_r=1&_t=ZS-93S9lJbGvE9" target="_blank">TikTok</a>
+    </div>
+</footer>
+
+        <script>
+            const products = {
+            le_city_pouch_s: {
+                title: "Le City Pouch On Strap in Silver",
+                image: "images/balenciaga_1.jpg",
+                thumbnails: [
+                    "images/balenciaga_1.jpg",
+                    "images/balenciaga_1back.jpg",
+                    "images/balenciaga_1in.jpg"
+                ],
+                price: "RM 2,525.00",
+                details: `
+            <h4>Product Details</h4>
+            <ul class="product-details">
+                <li>Arena lambskin</li>
+                <li>Pouch design</li>
+                <li>Adjustable & removable strap</li>
+                <li>Crossbody & shoulder carry</li>
+                <li>6 inner card slots</li>
+                <li>Made in Italy</li>
+                <li><strong>Condition:</strong> Excellent. This previously owned item is in near-perfect condition with no signs of damage or use</li>
+            </ul>
+            <h4>Dimensions</h4>
+            <ul class="product-details">
+                <li>Length: 25 cm</li>
+                <li>Height: 14 cm</li>
+                <li>Width: 4 cm</li>
+                <li>Strap drop: 60 cm</li>
+            </ul>
+            `
+            },
+
+            le_city_pouch_b: {
+                title: "Le City Pouch On Strap in Black",
+                image: "images/balenciaga_2.jpg",
+                thumbnails: [
+                    "images/balenciaga_2.jpg",
+                    "images/balenciaga_2back.jpg",
+                    "images/balenciaga_2in.jpg"
+                ],
+                price: "RM 2,525.00",
+                details: `
+            <h4>Product Details</h4>
+            <ul class="product-details">
+                <li>Arena lambskin</li>
+                <li>Pouch design</li>
+                <li>Adjustable & removable strap</li>
+                <li>Crossbody & shoulder carry</li>
+                <li>6 inner card slots</li>
+                <li>Made in Italy</li>
+                <li><strong>Condition:</strong> Excellent. This previously owned item is in near-perfect condition with no signs of damage or use</li>
+            </ul>
+            <h4>Dimensions</h4>
+            <ul class="product-details">
+                <li>Length: 25 cm</li>
+                <li>Height: 14 cm</li>
+                <li>Width: 4 cm</li>
+                <li>Strap drop: 60 cm</li>
+            </ul>
+            `
+            },
+
+            le_city_tote_b: {
+                title: "Le City Tote Bag Small in Black",
+                image: "images/balenciaga_3.jpg",
+                thumbnails: [
+                    "images/balenciaga_3.jpg",
+                    "images/balenciaga_3back.jpg",
+                    "images/balenciaga_3in.jpg"
+                ],
+                price: "RM 3,950.00",
+                details: `
+            <h4>Product Details</h4>
+            <ul class="product-details">
+                <li>Arena lambskin</li>
+                <li>Tote bag</li>
+                <li>Two handles</li>
+                <li>Adjustable and removable strap</li>
+                <li>Crossbody and shoulder carry</li>
+                <li>Brass hardware</li>
+                <li>Front zipped pocket with knotted leather puller</li>
+                <li>Magnet closure</li>
+                <li>1 main compartment</li>
+                <li>1 inner zipped pocket</li>
+                <li>Cotton canvas lining</li>
+                <li>Made in Italy</li>
+                <li><strong>Condition:</strong> Good. This previously owned and used item is in good condition with minimal signs of use. This may include fading of material or plating and scratches</li>
+            </ul>
+            <h4>Dimensions</h4>
+            <ul class="product-details">
+                <li>Can fit a smartphone, a book, a tablet and a book</li>
+                <li>Length: 33 cm</li>
+                <li>Height: 26 cm</li>
+                <li>Width: 12.5 cm</li>
+                <li>Handle drop: 16 cm</li>
+                <li>Strap drop: 57.5 cm</li>
+            </ul>
+            `
+            },
+
+            hourglass_pochette: {
+                title: "Hourglass Pochette With Chain in Dark Burgundy",
+                image: "images/balenciaga_4.jpg",
+                thumbnails: [
+                    "images/balenciaga_4.jpg",
+                    "images/balenciaga_4back.jpg",
+                    "images/balenciaga_4in.jpg"
+                ],
+                price: "RM 2,250.00",
+                details: `
+            <h4>Product Details</h4>
+            <ul class="product-details">
+                <li>Soft crocodile embossed calfskin</li>
+                <li>Pochette</li>
+                <li>One handle</li>
+                <li>Removable chain strap</li>
+                <li>Crossbody and hand carry</li>
+                <li>Shiny gold B logo hardware</li>
+                <li>Studded magnet closure</li>
+                <li>1 main compartment</li>
+                <li>6 inner card slots</li>
+                <li>Nappa lambskin lining</li>
+                <li>Made in Italy</li>
+                <li><strong>Condition:</strong> Excellent. This previously owned item is in near-perfect condition with no signs of damage or use</li>
+            </ul>
+            <h4>Dimensions</h4>
+            <ul class="product-details">
+                <li>Can fit a smartphone and credit cards</li>
+                <li>Length: 26 cm</li>
+                <li>Height: 17 cm</li>
+                <li>Width: 4.5 cm</li>
+                <li>Strap drop: 55 cm</li>
+            </ul>
+            `
+            },
+
+            medium_baguette: {
+                title: "Medium Baguette Shoulder Bag in Indigo Blue",
+                image: "images/fendi_1.webp",
+                thumbnails: [
+                    "images/fendi_1.webp",
+                    "images/fendi_1back.webp",
+                    "images/fendi_1in.webp"
+                ],
+                price: "RM 2,559.00",
+                details: `
+            <h4>Product Details</h4>
+            <ul class="product-details">
+                <li>Indigo blue</li>
+                <li>Foldover top with magnetic fastening</li>
+                <li>Adjustable detachable shoulder strap</li>
+                <li>Single detachable top handle</li>
+                <li>This piece comes complete with a protective dust bag</li>
+                <li>Made in Italy</li>
+                <li><strong>Condition:</strong> Excellent. This previously owned item is in near-perfect condition with no signs of damage or use</li>
+            </ul>
+            <h4>Dimensions</h4>
+            <ul class="product-details">
+                <li>Depth: 6 cm</li>
+                <li>Height: 15 cm</li>
+                <li>Width: 27 cm</li>
+            </ul>
+            `
+            },
+
+            striped_jersey_baguette: {
+                title: "Striped Jersey Baguette Satchel",
+                image: "images/fendi_2.webp",
+                thumbnails: [
+                    "images/fendi_2.webp",
+                    "images/fendi_2back.webp",
+                    "images/fendi_2in.webp"
+                ],
+                price: "RM 2,784.00",
+                details: `
+            <h4>Product Details</h4>
+            <ul class="product-details">
+                <li>Cotton body</li>
+                <li>Detachable flat top handle</li>
+                <li>Detachable flat strap</li>
+                <li>Front flap with magnetic snap closure</li>
+                <li>Interior zip pocket</li>
+                <li>Serial Number: 8BR600 ALVQ 229 0501</li>
+                <li>Inclusions: Shoulder strap.</li>
+                <li>Made in Italy</li>
+                <li><strong>Condition:</strong> Excellent. This previously owned item is in near-perfect condition with no signs of damage or use</li>
+            </ul>
+            <h4>Dimensions</h4>
+            <ul class="product-details">
+                <li>Depth: 6 cm</li>
+                <li>Width: 27 cm</li>
+                <li>Height: 15 cm</li>
+                <li>Handle: 14.5 cm</li>
+                <li>Strap: 38 cm</li>
+            </ul>
+            `
+            },
+
+            baguette_shoulder: {
+                title: "Baguette Shoulder Bag",
+                image: "images/fendi_3.webp",
+                thumbnails: [
+                    "images/fendi_3.webp",
+                    "images/fendi_3back.webp",
+                    "images/fendi_3in.webp"
+                ],
+                price: "RM 2,559.00",
+                details: `
+            <h4>Product Details</h4>
+            <ul class="product-details">
+                <li>Brown</li>
+                <li>Signature Zucca monogram pattern</li>
+                <li>Floral embroidery</li>
+                <li>Front flap closure</li>
+                <li>Adjustable shoulder strap</li>
+                <li>Internal pocket</li>
+                <li>Made in France</li>
+                <li><strong>Condition:</strong> Good. This previously owned and used item is in good condition with minimal signs of use. This may include fading of material or plating and scratches</li>
+            </ul>
+            <h4>Dimensions</h4>
+            <ul class="product-details">
+                <li>Depth: 4 cm</li>
+                <li>Height: 14 cm</li>
+                <li>Width: 26 cm</li>
+
+            </ul>
+            `
+            },
+
+            gucci_jackie: {
+                title: "Gucci Jackie 1961 Medium Shoulder Bag",
+                image: "images/gucci_1.avif",
+                thumbnails: [
+                    "images/gucci_1.avif",
+                    "images/gucci_1back.avif",
+                    "images/gucci_1in.avif"
+                ],
+                price: "RM 3,450.00",
+                details: `
+            <h4>Product Details</h4>
+            <ul class="product-details">
+                <li>Black soft, naturally glossy leather, treated by hand with tools for a lived-in appearance</li>
+                <li>Silver-toned hardware</li>
+                <li>Black nappa leather lining</li>
+                <li>Inside: 1 zip pocket</li>
+                <li>Piston closure</li>
+                <li>Made in Italy</li>
+                <li>Fits iPhone Pro Max/Plus, Airpods, long wallet, and lipstick</li>
+            </ul>
+            <h4>Dimensions</h4>
+            <ul class="product-details">
+                <li>Adjustable handle drop: 9.8" - 11.4"</li>
+                <li>Adjustable extender strap drop: 18.9" - 24"</li>
+                <li>12.4"W x 8.7"H x 1.8"D</li>
+                <li>Weight: 0.8lbs approximately</li>
+            </ul>
+            `
+            },
+
+            lunetta_small: {
+                title: "Lunetta Small Crossbody Bag",
+                image: "images/gucci_2.avif",
+                thumbnails: [
+                    "images/gucci_2.avif",
+                    "images/gucci_2back.webp",
+                    "images/gucci_2in.avif"
+                ],
+                price: "RM 2,271.00",
+                details: `
+            <h4>Product Details</h4>
+            <ul class="product-details">
+                <li>White soft leather</li>
+                <li>Silver-toned hardware</li>
+                <li>Green and red Web</li>
+                <li>Sand canvas lining with Diamante motif</li>
+                <li>Detachable and adjustable leather handle</li>
+                <li>Inside: 1 zip pocket</li>
+                <li>Zip closure</li>
+                <li>Made in Italy</li>
+                <li>Fits iPhone Plus, Airpods and small wallet</li>
+            </ul>
+            <h4>Dimensions</h4>
+            <ul class="product-details">
+                <li>5.9" handle drop</li>
+                <li>Detachable and adjustable leather shoulder strap with 17.7" drop</li>
+                <li>8.6"W x 5.1"H x 1.1"D</li>
+                <li>Weight: 0.4lbs, approximately</li>
+            </ul>
+            `
+            },
+
+            mini_gg_marmont: {
+                title: "Mini GG Marmont Heart-shaped Tote Bag",
+                image: "images/gucci_3.webp",
+                thumbnails: [
+                    "images/gucci_3.webp",
+                    "images/gucci_3back.webp",
+                    "images/gucci_3in.webp"
+                ],
+                price: "RM 1,600.00",
+                details: `
+            <h4>Product Details</h4>
+            <ul class="product-details">
+                <li>Dark red</li>
+                <li>Heart shape</li>
+                <li>Marmont quilted</li>
+                <li>Top handle</li>
+                <li>Zip fastening</li>
+                <li>Gold-tone logo</li>
+                <li>Made in Italy</li>
+                <li>This piece comes complete with a protective dust bag</li>
+            </ul>
+            <h4>Dimensions</h4>
+            <ul class="product-details">
+                <li>Depth: 2 cm</li>
+                <li>Height: 12 cm</li>
+                <li>Width: 14 cm</li>
+            </ul>
+            `
+            },
+
+            beige_canvas_medium: {
+                title: "Beige Canvas Medium Ophidia GG Tote Bag",
+                image: "images/gucci_4.webp",
+                thumbnails: [
+                    "images/gucci_4.webp",
+                    "images/gucci_4back.webp",
+                    "images/gucci_4in.webp"
+                ],
+                price: "RM 3,843.00",
+                details: `
+            <h4>Product Details</h4>
+            <ul class="product-details">
+                <li>Beige/ebano brown</li>
+                <li>GG Supreme canvas</li>
+                <li>Leather trim</li>
+                <li>Signature Web detailing</li>
+                <li>Signature Double G gold-tone logo lettering</li>
+                <li>Open top</li>
+                <li>Concealed magnetic fastening</li>
+                <li>Two long top handles</li>
+                <li>Faux suede lining</li>
+                <li>Debossed internal logo</li>
+                <li>Internal zip-fastening pocket</li>
+                <li>Internal patch pocket</li>
+                <li>Main compartment</li>
+                <li>Gold-tone hardware</li>
+                <li>Made in Italy</li>
+                <li>This piece comes complete with a protective dust bag</li>
+            </ul>
+            <h4>Dimensions</h4>
+            <ul class="product-details">
+                <li>Depth: 13 cm</li>
+                <li>Height: 27 cm</li>
+                <li>Width: 36 cm</li>
+                <li>Handle: 25 cm</li>
+            </ul>
+            `
+            },
+
+            mini_puzzle_edge: {
+                title: "Mini Puzzle Edge Bag in Classic Calfskin",
+                image: "images/loewe_1.webp",
+                thumbnails: [
+                    "images/loewe_1.webp",
+                    "images/loewe_1back.webp",
+                    "images/loewe_1in.webp"
+                ],
+                price: "RM 2,550.00",
+                details: `
+            <h4>Product Details</h4>
+            <ul class="product-details">
+                <li>Light green</li>
+                <li>Calf leather</li>
+                <li>Single top handle</li>
+                <li>Adjustable detachable shoulder strap</li>
+                <li>Foldover top</li>
+                <li>Signature debossed Anagram motif</li>
+                <li>Top zip fastening</li>
+                <li>Main compartment</li>
+                <li>Canvas lining</li>
+            </ul>
+            <h4>Dimensions</h4>
+            <ul class="product-details">
+                <li>Strap: 54.5 cm</li>
+                <li>Depth: 6 cm</li>
+                <li>Handle: 4 cm</li>
+                <li>Width: 16 cm</li>
+                <li>Height: 12.5 cm</li>
+            </ul>
+            `
+            },
+
+            calfskin_and_suede: {
+                title: "Calfskin and Suede Anagram Pocket Tote Bag",
+                image: "images/loewe_2.webp",
+                thumbnails: [
+                    "images/loewe_2.webp",
+                    "images/loewe_2back.webp",
+                    "images/loewe_2in.webp"
+                ],
+                price: "RM 2,000.00",
+                details: `
+            <h4>Product Details</h4>
+            <ul class="product-details">
+                <li>Calf and Suede leather body</li>
+                <li>Rolled leather handles</li>
+                <li>Open top with magnetic snap closure</li>
+                <li>Exterior zip and flap pockets</li>
+                <li>Interior zip pocket</li>
+                <li>Black</li>
+                <li>Serial Number: 290506</li>
+                <li>This item has no inclusions</li>
+                <li>Condition: Good. This previously owned and used item is in good condition with minimal signs of use. This may include fading of material or plating and scratches</li>
+            </ul>
+            <h4>Dimensions</h4>
+            <ul class="product-details">
+                <li>Depth: 16.5 cm</li>
+                <li>Width: 33 cm</li>
+                <li>Height: 27 cm</li>
+                <li>Handle: 15 cm</li>
+            </ul>
+            `
+            },
+
+            prada_tessuto_gaufre: {
+                title: "Prada Tessuto Gaufre Re-Edition Shoulder Bag",
+                image: "images/prada_1.webp",
+                thumbnails: [
+                    "images/prada_1.webp",
+                    "images/prada_1back.webp",
+                    "images/prada_1in.webp"
+                ],
+                price: "RM 2,560.00",
+                details: `
+            <h4>Product Details</h4>
+            <ul class="product-details">
+                <li>Gathered nylon body</li>
+                <li>Flat leather shoulder strap</li>
+                <li>Top zip closure</li>
+                <li>Blue</li>
+                <li>Inclusions: dust bag, authenticity card</li>
+                <li>Made in Italy</li>
+                <li>Condition: Excellent. This previously owned item is in near-perfect condition with no signs of damage or use</li>
+            </ul>
+            <h4>Dimensions</h4>
+            <ul class="product-details">
+                <li>Depth: 6 cm</li>
+                <li>Width: 21.5 cm</li>
+                <li>Height: 17 cm</li>
+                <li>Strap: 20 cm</li>
+            </ul>
+            `
+            },
+
+            prada_tessuto_canapa: {
+                title: "Prada Tessuto Canapa Logo Tote Bag",
+                image: "images/prada_2.webp",
+                thumbnails: [
+                    "images/prada_2.webp",
+                    "images/prada_2back.webp",
+                    "images/prada_2in.webp"
+                ],
+                price: "RM 1,822.00",
+                details: `
+            <h4>Product Details</h4>
+            <ul class="product-details">
+                <li>Nylon body with leather trim</li>
+                <li>Flat leather handles</li>
+                <li>Open top with magnetic snap closure</li>
+                <li>Interior zip and slip pockets</li>
+                <li>Red</li>
+                <li>This item has no inclusions</li>
+                <li>Made in Italy</li>
+                <li>Condition: Good. This previously owned and used item is in good condition with minimal signs of use. This may include fading of material or plating and scratches</li>
+            </ul>
+            <h4>Dimensions</h4>
+            <ul class="product-details">
+                <li>Depth: 14 cm</li>
+                <li>Width: 35 cm</li>
+                <li>Height: 34 cm</li>
+                <li>Strap: 24 cm</li>
+            </ul>
+            `
+            },
+
+            prada_glace: {
+                title: "Prada Glace Calf Twin Pocket Satchel",
+                image: "images/prada_3.webp",
+                thumbnails: [
+                    "images/prada_3.webp",
+                    "images/prada_3back.webp",
+                    "images/prada_3in.webp"
+                ],
+                price: "RM 1,689.00",
+                details: `
+            <h4>Product Details</h4>
+            <ul class="product-details">
+                <li>Leather body</li>
+                <li>Rolled leather handles</li>
+                <li>Detachable flat leather shoulder strap</li>
+                <li>Open top with magnetic snap closure</li>
+                <li>Dual zip compartments</li>
+                <li>Interior zip and slip pockets</li>
+                <li>Gray</li>
+                <li>Inclusions: shoulder strap</li>
+                <li>Made in Italy</li>
+                <li>Condition: Good. This previously owned and used item is in good condition with minimal signs of use. This may include fading of material or plating and scratches</li>
+            </ul>
+            <h4>Dimensions</h4>
+            <ul class="product-details">
+                <li>Depth: 19 cm</li>
+                <li>Width: 24.5 cm</li>
+                <li>Height: 22 cm</li>
+                <li>Handle: 11 cm</li>
+                <li>Strap: 59 cm</li> 
+            </ul>
+            `
+            },
+
+            tina_shoulder: {
+                title: "Tina Shoulder Bag in Triomphe Canvas",
+                image: "images/celine_1.avif",
+                thumbnails: [
+                    "images/celine_1.avif",
+                    "images/celine_1back.avif",
+                    "images/celine_1in.avif"
+                ],
+                price: "RM 2,300.00",
+                details: `
+            <h4>Product Details</h4>
+            <ul class="product-details">
+                <li>Black</li>
+                <li>Triomphe canvas</li>
+                <li>lambskin lining</li>
+                <li>Gold Finishing</li>
+                <li>Shoulder and hand carry</li>
+                <li>1 main compartment</li>
+                <li>1 inner flat pocket</li>
+                <li>Condition: Excellent. This previously owned item is in near-perfect condition with no signs of damage or use</li>
+            </ul>
+            <h4>Dimensions</h4>
+            <ul class="product-details">
+                <li>10.2 x 4.7 x 1.2 IN (26 x 12 x 3 CM)</li>
+                <li>Adjustable strap with a minimum drop 10.63 IN (27 CM) and maximum drop 8.66 IN (22 CM)</li>
+            </ul>
+            `
+            },
+
+            mini_cabas: {
+                title: "Mini Cabas Anais Cuir Triomphe in Grained Calfskin",
+                image: "images/celine_2.avif",
+                thumbnails: [
+                    "images/celine_2.avif",
+                    "images/celine_2back.avif",
+                    "images/celine_2in.avif"
+                ],
+                price: "RM 3,500.00",
+                details: `
+            <h4>Product Details</h4>
+            <ul class="product-details">
+                <li>Pale Beige</li>
+                <li>Calfskin</li>
+                <li>suede Calfskin Lining</li>
+                <li>Gold Finishing</li>
+                <li>Hand carry, shoulder carry and cross-body carry</li>
+                <li>Snap button closure</li>
+                <li>1 main compartment</li>
+                <li>1 inner flat pocket</li>
+                <li>Functional leather belts on the sides to tighten the bag</li>
+                <li>Condition: Excellent. This previously owned item is in near-perfect condition with no signs of damage or use</li>
+            </ul>
+            <h4>Dimensions</h4>
+            <ul class="product-details">
+                <li>8 x 8 x 4 IN (20 x 21 x 10 CM)</li>
+                <li>Leather Handles with 5 IN (13 CM) drop</li>
+                <li>Removable and adjustable strap with a minimum drop 19 IN (48 CM) and maximum drop 22 IN (56 CM)</li>
+            </ul>
+            `
+            },
+
+            cassandre_large: {
+                title: "Cassandre Large Pouch on Chain in Lambskin",
+                image: "images/saintlaurent_1.avif",
+                thumbnails: [
+                    "images/saintlaurent_1.avif",
+                    "images/saintlaurent_1back.avif",
+                    "images/saintlaurent_1in.avif"
+                ],
+                price: "RM 2,070.00",
+                details: `
+            <h4>Product Details</h4>
+            <ul class="product-details">
+                <li>Black</li>
+                <li>Leather lining</li>
+                <li>Bronze-tone hardware</li>
+                <li>Snap-button closure</li>
+                <li>One zip pocket</li>
+                <li>Lambskin Brass</li>
+                <li>Style ID 841702AACYT1000</li>
+                <li>Made in Italy</li>
+                <li>Condition: Excellent. This previously owned item is in near-perfect condition with no signs of damage or use</li>
+            </ul>
+            <h4>Dimensions</h4>
+            <ul class="product-details">
+                <li>35 X 22 X 3–4.2 CM / 13.8" x 8.7" x 1.2–1.7"</li>
+                <li>Strap drop: 28 CM / 11"</li>
+            </ul>
+            `
+            },
+
+            toy_puffer: {
+                title: "Toy Puffer in Shiny Leather",
+                image: "images/saintlaurent_2.avif",
+                thumbnails: [
+                    "images/saintlaurent_2.avif",
+                    "images/saintlaurent_2back.avif",
+                    "images/saintlaurent_2in.avif"
+                ],
+                price: "RM 1,730.00",
+                details: `
+            <h4>Product Details</h4>
+            <ul class="product-details">
+                <li>Dark Ruby</li>
+                <li>Grosgrain lining</li>
+                <li>Bronze-tone hardware</li>
+                <li>Magnetic snap closure</li>
+                <li>One zip pocket</li>
+                <li>Two card slots</li>
+                <li>Calfskin, metal</li>
+                <li>Style ID 759337AAFFA6593</li>
+                <li>Made in Italy</li>
+                <li>Condition: Excellent. This previously owned item is in near-perfect condition with no signs of damage or use</li>
+            </ul>
+            <h4>Dimensions</h4>
+            <ul class="product-details">
+                <li>22.5 x 16 x 8 CM / 8.9" X 6.3" X 3.1"</li>
+                <li>Single strap drop: 55 CM / 21.7"</li>
+                <li>Folded strap drop: 29 CM / 11.4"</li>
+            </ul>
+            `
+            }
+            };
+
+            const params = new URLSearchParams(window.location.search);
+let productKey = params.get('product');
+
+// fallback kalau buka page terus
+if (!productKey) {
+    window.location.href = "collections.html";
+}
+
+const product = products[productKey];
+
+if (product) {
+    document.getElementById('product-title').innerText = product.title;
+    document.getElementById('product-price').innerText = product.price;
+    document.getElementById('product-details').innerHTML = product.details;
+    document.getElementById('main-image').src = product.image;
+
+    const thumbnailsContainer = document.querySelector('.product-thumbnails');
+    thumbnailsContainer.innerHTML = "";
+
+    product.thumbnails.forEach(src => {
+        const img = document.createElement('img');
+        img.src = src;
+        img.onclick = () => {
+            document.getElementById('main-image').src = src;
+        };
+        thumbnailsContainer.appendChild(img);
+    });
+}
+
+let currentProduct = null;
+
+if (product) {
+    currentProduct = product;
+
+    document.getElementById('product-title').innerText = product.title;
+    document.getElementById('product-price').innerText = product.price;
+    document.getElementById('product-details').innerHTML = product.details;
+    document.getElementById('main-image').src = product.image;
+
+    const thumbnailsContainer = document.querySelector('.product-thumbnails');
+    thumbnailsContainer.innerHTML = "";
+
+    product.thumbnails.forEach(src => {
+        const img = document.createElement('img');
+        img.src = src;
+        img.onclick = () => {
+            document.getElementById('main-image').src = src;
+        };
+        thumbnailsContainer.appendChild(img);
+    });
+}
+
+let cart = [];
+
+function toggleCart() {
+    const cartBox = document.getElementById("cartDropdown");
+    cartBox.style.display = cartBox.style.display === "block" ? "none" : "block";
+}
+
+function addToCart() {
+    if (!currentProduct) return;
+
+    cart.push({
+        name: currentProduct.title,
+        price: currentProduct.price
+    });
+
+    updateCart();
+}
+
+function updateCart() {
+    const cartBox = document.getElementById("cartDropdown");
+    const count = document.getElementById("cart-count");
+
+    cartBox.innerHTML = "";
+
+    if (cart.length === 0) {
+        cartBox.innerHTML = "<p style='text-align:center;'>Cart is empty</p>";
+    } else {
+        cart.forEach((item, index) => {
+            cartBox.innerHTML += `
+                <div class="product-cart-item">
+                    <span>${item.name}</span>
+                    <button onclick="removeItem(${index})">✖</button>
+                </div>
+            `;
+        });
+
+        cartBox.innerHTML += `
+            <button class="product-checkout-btn">Checkout</button>
+        `;
+    }
+
+    count.innerText = cart.length;
+}
+
+function removeItem(index) {
+    cart.splice(index, 1);
+    updateCart();
+}
+
+function changeImage(img) {
+    document.getElementById("main-image").src = img.src;
+}
+
+        </script>
+    </body>
+</html>
