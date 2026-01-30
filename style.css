@@ -54,6 +54,11 @@ nav a.active {
 
 /* Home Page Section */
 
+.nav-links a.active {
+    color: #8b5e3c;
+    font-weight: 600;
+}
+
 /* =====================
     RESET
 ===================== */
